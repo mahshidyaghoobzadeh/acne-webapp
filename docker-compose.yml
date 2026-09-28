@@ -1,0 +1,56 @@
+services:
+  app:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./frontend:/app/static:ro          # فایل‌های frontend رو mount می‌کنه
+      - ./backend/main.py:/app/main.py     # تغییرات زنده در main.py
+      - ./backend/model:/app/model:ro      # مدل رو mount می‌کنه
+    depends_on:
+      redis:
+        condition: service_healthy         # صبر می‌کنه تا Redis آماده بشه
+      qdrant:
+        condition: service_started
+      ollama:
+        condition: service_started
+    environment:
+      - OLLAMA_HOST=http://ollama:11434
+      - QDRANT_HOST=http://qdrant:6333
+      - QDRANT_COLLECTION=skin_products
+      - REDIS_HOST=redis
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+    volumes:
+      - qdrant_data:/qdrant/storage
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --save 60 1 --loglevel warning
+    healthcheck:                               # این بخش جدیده – Redis رو چک می‌کنه
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  ollama_data:
+  qdrant_data:
+  redis_data:

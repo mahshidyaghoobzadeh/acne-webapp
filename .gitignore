@@ -1,0 +1,15 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Secrets
+.env
+.env.*
+
+# Large files kept local only
+backend/model/
+dataset/
+
+# Editor
+.idea/

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services · Peace Of Mind</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="page-ai">
+  <nav class="top-menu" aria-label="Main">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="AIsystem.html" aria-current="page">Services</a></li>
+      <li><a href="AboutUS.html">About</a></li>
+      <li><a href="ContactUs.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="boxtxt">
+      <h1 class="visually-hidden">Skin analysis</h1>
+      <p>
+        Sometimes you want to relive your skin on a little budget,
+        or relive your mind. Upload a photo of your face and get a
+        new structure for making a homemade facial skincare mask!
+      </p>
+    </div>
+
+    <!-- Result comes first, upload area below -->
+    <div id="result" role="status" aria-live="polite"></div>
+
+    <div class="main-content-ai">
+      <div class="upload_area">
+        <label for="camera">Choose a photo of your face</label>
+        <input id="camera" type="file" accept="image/jpeg,image/png,image/webp">
+        <p class="upload_hint">Clear, front-facing, good light · JPG, PNG or WebP · max 10 MB</p>
+        <img id="preview" src="" alt="Preview of your selected photo" class="preview-img">
+        <button id="sendBtn" type="button">Analyze</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-col">
+        <h4>Peace Of Mind</h4>
+        <p>SPA Beauty Salon</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Email: info@peaceofmind.com</p>
+        <p>Instagram: @peaceofminddance</p>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 Peace Of Mind · Spa &amp; Skincare</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

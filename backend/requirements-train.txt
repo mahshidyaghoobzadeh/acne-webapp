@@ -1,0 +1,8 @@
+# dev-only: needed for train_v2.py, not by the server
+-r requirements.txt
+torch
+torchvision
+timm
+onnx
+onnxscript
+scikit-learn
